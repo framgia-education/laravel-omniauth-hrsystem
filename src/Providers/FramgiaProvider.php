@@ -12,7 +12,9 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      *
      * @var string
      */
-    protected $baseUrl = 'https://wsm.framgia.vn';
+    protected $baseUrl = 'http://10.0.1.14/';
+
+    protected $authorizeUrl = "https://wsm.framgia.vn";
 
     /**
      * The scopes being requested.
@@ -26,7 +28,7 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->baseUrl . '/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->authorizeUrl . '/authorize', $state);
     }
 
     /**
