@@ -133,6 +133,56 @@ abstract class AbstractUser implements ArrayAccess, Contracts\User
     }
 
     /**
+     * Get the role of the user.
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Get status of the user.
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get the position of the user.
+     *
+     * @return array
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Get the company of the user.
+     *
+     * @return array
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Get workspaces of the user.
+     *
+     * @return array
+     */
+    public function getWorkspaces()
+    {
+        return $this->workspaces;
+    }
+
+    /**
      * Get the raw user array.
      *
      * @return array

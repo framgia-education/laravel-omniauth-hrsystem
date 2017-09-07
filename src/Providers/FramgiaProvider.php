@@ -12,7 +12,9 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      *
      * @var string
      */
-    protected $baseUrl = 'http://auth.framgia.vn';
+    protected $baseUrl = 'http://10.0.1.14/';
+
+    protected $authorizeUrl = "https://wsm.framgia.vn";
 
     /**
      * The scopes being requested.
@@ -26,7 +28,7 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getAuthUrl($state)
     {
-        return $this->buildAuthUrlFromBase($this->baseUrl . '/auth/hr_system/authorize', $state);
+        return $this->buildAuthUrlFromBase($this->authorizeUrl . '/authorize', $state);
     }
 
     /**
@@ -34,7 +36,7 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getTokenUrl()
     {
-        return $this->baseUrl . '/auth/hr_system/access_token';
+        return $this->baseUrl . '/auth/access_token';
     }
 
     /**
@@ -42,9 +44,13 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      */
     protected function getUserByToken($token)
     {
-        $userUrl = $this->baseUrl . '/me' . '?access_token=' . $token;
+        $userUrl = $this->baseUrl . '/me';
 
-        $response = $this->getHttpClient()->get($userUrl);
+        $response = $this->getHttpClient()->post($userUrl, [
+            'form_params' => [
+                'access_token' => $token,
+            ],
+        ]);
 
         $user = json_decode($response->getBody(), true);
 
@@ -64,6 +70,11 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
             'gender' => Arr::get($user, 'gender'),
             'birthday' => Arr::get($user, 'birthday'),
             'phoneNumber' => Arr::get($user, 'phone_number'),
+            'role' => Arr::get($user, 'role'),
+            'status' => Arr::get($user, 'status'),
+            'position' => Arr::get($user, 'position'),
+            'company' => Arr::get($user, 'company'),
+            'workspaces' => Arr::get($user, 'workspaces'),
         ]);
     }
 }

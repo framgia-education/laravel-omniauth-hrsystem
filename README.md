@@ -1,9 +1,19 @@
 
 ## Documentation
 
-To get started with **FramgiaAuth**, use Composer to add the package to your project's dependencies:
-
-    composer require framgia-education/laravel-omniauth-hrsystem
+To get started with **FramgiaAuth**, use `composer.json` to add the package to your project's dependencies:
+```json
+{
+    "repositories": [
+        {
+            "url": "https://github.com/framgia-education/laravel-omniauth-hrsystem",
+            "type": "git"
+        }
+    ],
+    "framgia-education/laravel-omniauth-hrsystem": "dev-{name branch}"
+}
+```
+then running `composer install`
 
 ### Configuration
 
