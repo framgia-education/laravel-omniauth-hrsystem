@@ -12,7 +12,7 @@ class FramgiaProvider extends AbstractProvider implements ProviderInterface
      *
      * @var string
      */
-    protected $baseUrl = 'http://auth.framgia.vn';
+    protected $baseUrl = env('FRAMGIA_CLIENT_BASE_URL');
 
     /**
      * The scopes being requested.
