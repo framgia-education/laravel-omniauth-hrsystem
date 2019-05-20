@@ -35,6 +35,12 @@ You will also need to add credentials for the OAuth services your application ut
     'redirect' => 'http://your-callback-url',
 ],
 ```
+
+Base url information should be placed in your .env:
+```
+FRAMGIA_CLIENT_BASE_URL=base_url
+```
+
 ### Basic Usage
 
 Next, you are ready to authenticate users! You will need two routes: one for redirecting the user to the OAuth provider, and another for receiving the callback from the provider after authentication. We will access **Framgia Auth** using the `FAuth` facade:
